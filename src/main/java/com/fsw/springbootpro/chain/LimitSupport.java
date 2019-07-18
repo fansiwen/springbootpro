@@ -1,7 +1,7 @@
 package com.fsw.springbootpro.chain;
 
 /**
- * 只解决一定范围内的问题
+ * 只解决一定范围内的问题.
  */
 public class LimitSupport extends Support{
 
