@@ -9,9 +9,13 @@ import org.apache.poi.ss.usermodel.Sheet;
  */
 public class RowThread extends Thread{
     private Sheet sheet;
+    private int start;
+    private int end;
 
-    public RowThread(Sheet sheet) {
+    public RowThread(Sheet sheet, int start, int end) {
         this.sheet = sheet;
+        this.start = start;
+        this.end = end;
     }
 
     @Override
