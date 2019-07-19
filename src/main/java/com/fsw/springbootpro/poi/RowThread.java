@@ -3,6 +3,9 @@ package com.fsw.springbootpro.poi;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * sheet页中对行数据的操作
  * @author fansiwen
@@ -20,7 +23,29 @@ public class RowThread extends Thread{
 
     @Override
     public void run() {
-        Row row = sheet.getRow(0);
-        System.out.println(row.getCell(1));
+        List list = new ArrayList();
+        for (int i = start; i <=end ; i++) {
+            //处理每一行的数据映射到对应的对象中
+            WhiteName whiteName = dealData(i);
+            list.add(whiteName);
+        }
+    }
+
+    /**
+     * 封装实体类数据
+     * @param i
+     */
+    private WhiteName dealData(int i) {
+        //获取行
+        Row row = sheet.getRow(i);
+        WhiteName whiteName = new WhiteName();
+        whiteName.setIndex(Integer.valueOf(row.getCell(0).getStringCellValue()));
+        whiteName.setCompanyName((row.getCell(1).getStringCellValue()));
+        whiteName.setName(row.getCell(2).getStringCellValue());
+        whiteName.setSex(row.getCell(3).getStringCellValue());
+        whiteName.setBirthday(row.getCell(4).getDateCellValue());
+        whiteName.setIdType(row.getCell(5).getStringCellValue());
+        whiteName.setIdno(row.getCell(6).getStringCellValue());
+        return whiteName;
     }
 }

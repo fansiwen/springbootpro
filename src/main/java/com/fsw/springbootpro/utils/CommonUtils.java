@@ -1,4 +1,4 @@
-package com.fsw.springbootpro;
+package com.fsw.springbootpro.utils;
 
 import java.util.concurrent.*;
 
@@ -8,7 +8,8 @@ import java.util.concurrent.*;
  */
 public class CommonUtils {
     /**
-     * 根据
+     * 根据所需要的线程数量创建线程池
+     *
      * @return
      */
     public static ExecutorService getThreadPool(int poolSize){

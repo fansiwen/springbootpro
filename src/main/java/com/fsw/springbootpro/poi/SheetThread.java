@@ -1,7 +1,6 @@
 package com.fsw.springbootpro.poi;
 
-import com.fsw.springbootpro.CommonUtils;
-import org.apache.poi.ss.usermodel.Row;
+import com.fsw.springbootpro.utils.CommonUtils;
 import org.apache.poi.ss.usermodel.Sheet;
 
 import java.util.concurrent.ExecutorService;
@@ -31,13 +30,15 @@ public class SheetThread extends Thread{
         ExecutorService threadPool = CommonUtils.getThreadPool(threadCount);
         for (int i = 1; i <=threadCount ; i++) {
             System.out.println(sheet.getSheetName()+"");
-            int start = 1+threadCount*1000;
+            int start = i+(i-1)*1000;
             int end = 0;
-            if(i==threadCount-1){
+            if(i==threadCount){
                 //代表是最后一个批次
-                end = maxRow-start;
+                end = maxRow;
+            }else{
+                end = start+1000;
             }
-            end = start+1000;
+            //开启线程
             threadPool.execute(new RowThread(sheet,start,end));
         }
         while(Thread.activeCount()>1){
