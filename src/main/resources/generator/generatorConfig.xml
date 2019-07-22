@@ -27,6 +27,7 @@
                         connectionURL="${db.url}"
                         userId="${db.username}"
                         password="${db.password}">
+
         </jdbcConnection>
 
         <!-- 非必需，类型处理器，在数据库类型和java类型之间的转换控制-->
@@ -67,7 +68,9 @@
         <!--<table tableName="WHITENAME" domainObjectName="WhiteName" enableCountByExample="false"
                enableUpdateByExample="false"  enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false"/>-->
-        <table tableName="WHITENAME" domainObjectName="WhiteName" />
+        <table tableName="WHITENAME" domainObjectName="WhiteName"
+                enableSelectByExample="false" enableCountByExample="false"
+                enableDeleteByExample="false" enableUpdateByExample="false"/>
             <!--<property name="useActualColumnNames" value="true"/>-->
             <!--<generatedKey column="ID" sqlStatement="Mysql" identity="true" />-->
             <!--<columnOverride column="DATE_FIELD" property="startDate" />

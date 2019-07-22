@@ -1,5 +1,6 @@
 package com.fsw.springbootpro.poi;
 
+import com.fsw.springbootpro.pojo.WhiteName;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 
@@ -45,7 +46,7 @@ public class RowThread extends Thread{
         whiteName.setSex(row.getCell(3).getStringCellValue());
         whiteName.setBirthday(row.getCell(4).getDateCellValue());
         whiteName.setIdType(row.getCell(5).getStringCellValue());
-        whiteName.setIdno(row.getCell(6).getStringCellValue());
+        whiteName.setIdNo(row.getCell(6).getStringCellValue());
         return whiteName;
     }
 }
