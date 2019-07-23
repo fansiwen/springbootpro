@@ -4,10 +4,10 @@
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 
 <generatorConfiguration>
-    <!--指定特定数据库驱动jar包所在位置，这里暂时不用-->
-   <!-- <classPathEntry location="/Program Files/IBM/SQLLIB/java/db2java.zip" />-->
-    <!--导入属性配置-->
-    <properties resource="db.properties"></properties>
+    <!--指定特定数据库驱动jar包所在位置-->
+    <classPathEntry location="E:\fsw\work\mavenRepository\mysql\mysql-connector-java\8.0.17\mysql-connector-java-8.0.17.jar" />
+    <!--导入属性配置 这里没有使用配置文件的形式，暂时注释掉-->
+    <!--<properties resource="db.properties"></properties>-->
     <context id="Mysql" targetRuntime="MyBatis3">
         <!--一些工具，生成实体类时的一些方法-->
         <!-- 生成 JavaBean 对象继承 Serializable 类 -->
@@ -23,10 +23,10 @@
         </commentGenerator>
 
         <!--jdbc连接配置-->
-        <jdbcConnection driverClass="${db.driverClassName}"
-                        connectionURL="${db.url}"
-                        userId="${db.username}"
-                        password="${db.password}">
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/test1?useUnicode=true&amp;characterEncoding=UTF-8&amp;useSSL=false&amp;autoReconnect=true&amp;failOverReadOnly=false&amp;serverTimezone=GMT%2B8"
+                        userId="root"
+                        password="123456">
 
         </jdbcConnection>
 
@@ -68,7 +68,7 @@
         <!--<table tableName="WHITENAME" domainObjectName="WhiteName" enableCountByExample="false"
                enableUpdateByExample="false"  enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false"/>-->
-        <table tableName="WHITENAME" domainObjectName="WhiteName"
+        <table tableName="TEACHER" domainObjectName="Teacher"
                 enableSelectByExample="false" enableCountByExample="false"
                 enableDeleteByExample="false" enableUpdateByExample="false"/>
             <!--<property name="useActualColumnNames" value="true"/>-->

@@ -4,14 +4,13 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.io.Serializable;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Person implements Serializable {
-    private static final long serialVersionUID = 1L;
+public class Student {
     private Integer id;
-    private String name;
     private Integer age;
+    private Integer grade;
+    private String name;
+
 }
