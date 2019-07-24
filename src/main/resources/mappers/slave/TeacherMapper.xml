@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fsw.springbootpro.mapper.slave.TeacherMapper">
+  <resultMap id="BaseResultMap" type="com.fsw.springbootpro.pojo.Teacher">
+    <constructor>
+      <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="age" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="course" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="name" javaType="java.lang.String" jdbcType="VARCHAR" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, age, course, name
+  </sql>
+  <select id="getList" resultMap="BaseResultMap">
+    select
+        <include refid="Base_Column_List"/>
+    from teacher
+  </select>
+  <select id="getByID" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from teacher
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="delete" parameterType="java.lang.Integer">
+    delete from teacher
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.fsw.springbootpro.pojo.Teacher">
+    insert into teacher (id, age, course, 
+      name)
+    values (#{id,jdbcType=INTEGER}, #{age,jdbcType=VARCHAR}, #{course,jdbcType=VARCHAR}, 
+      #{name,jdbcType=VARCHAR})
+  </insert>
+
+  <update id="update" parameterType="com.fsw.springbootpro.pojo.Teacher">
+    update teacher
+    set age = #{age,jdbcType=VARCHAR},
+      course = #{course,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
