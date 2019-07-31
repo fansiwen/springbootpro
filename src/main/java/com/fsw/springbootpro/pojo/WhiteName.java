@@ -2,6 +2,7 @@ package com.fsw.springbootpro.pojo;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Objects;
 
 public class WhiteName implements Serializable {
     private Integer index;
@@ -106,5 +107,24 @@ public class WhiteName implements Serializable {
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        WhiteName whiteName = (WhiteName) o;
+        return Objects.equals(index, whiteName.index) &&
+                Objects.equals(companyName, whiteName.companyName) &&
+                Objects.equals(name, whiteName.name) &&
+                Objects.equals(sex, whiteName.sex) &&
+                Objects.equals(birthday, whiteName.birthday) &&
+                Objects.equals(idType, whiteName.idType) &&
+                Objects.equals(idNo, whiteName.idNo);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(index, companyName, name, sex, birthday, idType, idNo);
     }
 }
