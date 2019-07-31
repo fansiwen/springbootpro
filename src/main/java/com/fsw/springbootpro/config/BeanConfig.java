@@ -11,7 +11,6 @@ import org.springframework.context.annotation.Configuration;
 /**
  * 配置Person的自动配置类
  */
-@ConditionalOnBean
 @Configuration
 public class BeanConfig {
     @Conditional({WindowsCondition.class})
